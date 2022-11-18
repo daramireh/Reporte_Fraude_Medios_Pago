@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Proyecto: Predicting Fraud in Financial Payment Services &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="¿Qué encontrar en los archivos?" href="markdown.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    REPORTE DE FRAUDE FINANCIERO EN SISTEMAS DE PAGOS
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   ¿Qué encontrar en los archivos?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Proyecto: Predicting Fraud in Financial Payment Services
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/notebooks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Proyecto: Predicting Fraud in Financial Payment Services
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos">
+   Proyecto para predecir el fraude financiero en los sistemas de pagos
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limpieza-de-los-datos">
+     3. Limpieza de los datos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#imputacion-de-valores-faltantes-latentes">
+       3.1. Imputación de valores faltantes latentes
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ingenieria-de-variables">
+     4. Ingeniería de variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizacion-de-datos">
+     5. Visualización de datos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dispersion-de-las-transacciones-en-el-tiempo">
+       5.1 Dispersión de las transacciones en el tiempo
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dispersion-de-las-transacciones-en-los-montos">
+       5.2 Dispersión de las transacciones en los montos
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dispersion-de-los-errores-en-el-balance-en-las-cuentas-receptoras">
+       5.3. Dispersión de los errores en el balance en las cuentas receptoras
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#separacion-de-las-transacciones-genuinas-y-fraudulentas">
+       5.4. Separación de las transacciones genuinas y fraudulentas
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Proyecto: Predicting Fraud in Financial Payment Services</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Proyecto: Predicting Fraud in Financial Payment Services
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos">
+   Proyecto para predecir el fraude financiero en los sistemas de pagos
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limpieza-de-los-datos">
+     3. Limpieza de los datos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#imputacion-de-valores-faltantes-latentes">
+       3.1. Imputación de valores faltantes latentes
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ingenieria-de-variables">
+     4. Ingeniería de variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizacion-de-datos">
+     5. Visualización de datos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dispersion-de-las-transacciones-en-el-tiempo">
+       5.1 Dispersión de las transacciones en el tiempo
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dispersion-de-las-transacciones-en-los-montos">
+       5.2 Dispersión de las transacciones en los montos
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dispersion-de-los-errores-en-el-balance-en-las-cuentas-receptoras">
+       5.3. Dispersión de los errores en el balance en las cuentas receptoras
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#separacion-de-las-transacciones-genuinas-y-fraudulentas">
+       5.4. Separación de las transacciones genuinas y fraudulentas
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="proyecto-predicting-fraud-in-financial-payment-services">
+<h1>Proyecto: Predicting Fraud in Financial Payment Services<a class="headerlink" href="#proyecto-predicting-fraud-in-financial-payment-services" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos">
+<h1>Proyecto para predecir el fraude financiero en los sistemas de pagos<a class="headerlink" href="#proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos" title="Permalink to this headline">#</a></h1>
+<p>Este proyecto es desarrollado por: Luis Daniel Trujillo, Jair Castro y Diego Ramirez</p>
+<p>Fue construido en Python versión 3.8 utilizando Jupyter Book como interprete de Python y Visual Studio Code como editor de codigo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargue de las librerias</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.lines</span> <span class="k">as</span> <span class="nn">mlines</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">pandas_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">learning_curve</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">average_precision_score</span>
+<span class="c1">#from xgboost.sklearn import XGBClassifier</span>
+<span class="c1">#from xgboost import plot_importance, to_graphviz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import de la base de datos</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;df.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Renombrando a las variables</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;oldbalanceOrg&#39;</span><span class="p">:</span><span class="s1">&#39;oldBalanceOrig&#39;</span><span class="p">,</span> <span class="s1">&#39;newbalanceOrig&#39;</span><span class="p">:</span><span class="s1">&#39;newBalanceOrig&#39;</span><span class="p">,</span> \
+                        <span class="s1">&#39;oldbalanceDest&#39;</span><span class="p">:</span><span class="s1">&#39;oldBalanceDest&#39;</span><span class="p">,</span> <span class="s1">&#39;newbalanceDest&#39;</span><span class="p">:</span><span class="s1">&#39;newBalanceDest&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   step      type    amount     nameOrig  oldBalanceOrig  newBalanceOrig  \
+0     1   PAYMENT   9839.64  C1231006815        170136.0       160296.36   
+1     1   PAYMENT   1864.28  C1666544295         21249.0        19384.72   
+2     1  TRANSFER    181.00  C1305486145           181.0            0.00   
+3     1  CASH_OUT    181.00   C840083671           181.0            0.00   
+4     1   PAYMENT  11668.14  C2048537720         41554.0        29885.86   
+
+      nameDest  oldBalanceDest  newBalanceDest  isFraud  isFlaggedFraud  
+0  M1979787155             0.0             0.0        0               0  
+1  M2044282225             0.0             0.0        0               0  
+2   C553264065             0.0             0.0        1               0  
+3    C38997010         21182.0             0.0        1               0  
+4  M1230701703             0.0             0.0        0               0  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se crea un reporte para la previsualización y conocimiento de la base de datos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">ProfileReport</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Análisis de las transacciones &#39;</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;style&#39;</span><span class="p">:{</span><span class="s1">&#39;full_width&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">}})</span>
+<span class="n">profile</span><span class="o">.</span><span class="n">to_widgets</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "0856582437a44a908d06753043560557"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Los tipos de transacciones fraudulentas son </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
+<span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span> <span class="c1"># only &#39;CASH_OUT&#39; </span>
+                                                             <span class="c1"># &amp; &#39;TRANSFER&#39;</span>
+
+<span class="n">dfFraudTransfer</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;TRANSFER&#39;</span><span class="p">)]</span>
+<span class="n">dfFraudCashout</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_OUT&#39;</span><span class="p">)]</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> El número de transferencias fraudulentas es = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+       <span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfFraudTransfer</span><span class="p">)))</span> <span class="c1"># 4097</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> El número de retiros fraudulentos es CASH_OUTs = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+       <span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfFraudCashout</span><span class="p">)))</span> <span class="c1"># 4116</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="limpieza-de-los-datos">
+<h2>3. Limpieza de los datos<a class="headerlink" href="#limpieza-de-los-datos" title="Permalink to this headline">#</a></h2>
+<p>Del Analisis Exploratorio de Datos (AED)nos dimos cuenta que el fraude ocurre solo en las transferencias y los retiros. Por lo tanto vamos a trabajar con una base que tenga solo ese tipo de transacciones</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se crea un sub data_frame con solo las transacciones TRANSFER y CASH_OUT</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;TRANSFER&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_OUT&#39;</span><span class="p">)]</span>
+
+<span class="n">randomState</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">randomState</span><span class="p">)</span>
+
+<span class="c1">#X = X.loc[np.random.choice(X.index, 100000, replace = False)]</span>
+
+<span class="c1"># Se pasa la columna fraude a un objeto llamado Y</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]</span>
+
+<span class="c1"># Se elimina las columnas irrelevantes para el AED</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;nameOrig&#39;</span><span class="p">,</span> <span class="s1">&#39;nameDest&#39;</span><span class="p">,</span> <span class="s1">&#39;isFlaggedFraud&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1"># Se transforma el tipo de transacción en codificación binaria</span>
+<span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;TRANSFER&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_OUT&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">X</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># convert dtype(&#39;O&#39;) to dtype(int)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="imputacion-de-valores-faltantes-latentes">
+<h3>3.1. Imputación de valores faltantes latentes<a class="headerlink" href="#imputacion-de-valores-faltantes-latentes" title="Permalink to this headline">#</a></h3>
+<p>La base de datos tiene varias transacciones con balances en 0 en las cuentas receptoras, tanto en el momentos antes y después de una transacción con montos distintos a 0. La proporción de tales transacciones, es mucho más grande en las que son fraudulentas (50%) que en las que son genuinas (0.06%)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se separa las observaciones fraudulentas de las que no</span>
+<span class="n">Xfraud</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">Y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">XnonFraud</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">Y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">La proporción de transacciones FRAUDULENTAS con </span><span class="se">\&#39;</span><span class="s1">oldBalanceDest</span><span class="se">\&#39;</span><span class="s1"> = </span><span class="se">\</span>
+<span class="se">\&#39;</span><span class="s1">newBalanceDest</span><span class="se">\&#39;</span><span class="s1"> = 0 aun cuando el monto transado </span><span class="se">\&#39;</span><span class="s1">amount</span><span class="se">\&#39;</span><span class="s1"> sea distinto de 0 es: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+<span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Xfraud</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">Xfraud</span><span class="o">.</span><span class="n">oldBalanceDest</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> \
+<span class="p">(</span><span class="n">Xfraud</span><span class="o">.</span><span class="n">newBalanceDest</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Xfraud</span><span class="o">.</span><span class="n">amount</span><span class="p">)])</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Xfraud</span><span class="p">))))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">La proporción de transacciones GENUINAS con </span><span class="se">\&#39;</span><span class="s1">oldBalanceDest</span><span class="se">\&#39;</span><span class="s1"> = </span><span class="se">\</span>
+<span class="se">\&#39;</span><span class="s1">newBalanceDest</span><span class="se">\&#39;</span><span class="s1"> = 0 aun cuando el monto transado </span><span class="se">\&#39;</span><span class="s1">amount</span><span class="se">\&#39;</span><span class="s1"> sea distinto de 0 es: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+<span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">XnonFraud</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">XnonFraud</span><span class="o">.</span><span class="n">oldBalanceDest</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> \
+<span class="p">(</span><span class="n">XnonFraud</span><span class="o">.</span><span class="n">newBalanceDest</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">XnonFraud</span><span class="o">.</span><span class="n">amount</span><span class="p">)])</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">XnonFraud</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La proporción de transacciones FRAUDULENTAS con &#39;oldBalanceDest&#39; = &#39;newBalanceDest&#39; = 0 aun cuando el monto transado &#39;amount&#39; sea distinto de 0 es: 0.4955558261293072
+
+La proporción de transacciones GENUINAS con &#39;oldBalanceDest&#39; = &#39;newBalanceDest&#39; = 0 aun cuando el monto transado &#39;amount&#39; sea distinto de 0 es: 0.0006176245277308345
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se hace la misma evaluación para las cuentas de origen</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se separa las observaciones fraudulentas de las que no</span>
+<span class="n">Xfraud</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">Y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">XnonFraud</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">Y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">La proporción de transacciones FRAUDULENTAS con </span><span class="se">\&#39;</span><span class="s1">oldBalanceOrig</span><span class="se">\&#39;</span><span class="s1"> = </span><span class="se">\</span>
+<span class="se">\&#39;</span><span class="s1">newBalanceOrig</span><span class="se">\&#39;</span><span class="s1"> = 0 aun cuando el monto transado </span><span class="se">\&#39;</span><span class="s1">amount</span><span class="se">\&#39;</span><span class="s1"> sea distinto de 0 es: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+<span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Xfraud</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">Xfraud</span><span class="o">.</span><span class="n">oldBalanceOrig</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> \
+<span class="p">(</span><span class="n">Xfraud</span><span class="o">.</span><span class="n">newBalanceOrig</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Xfraud</span><span class="o">.</span><span class="n">amount</span><span class="p">)])</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">Xfraud</span><span class="p">))))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">La proporción de transacciones GENUINAS con </span><span class="se">\&#39;</span><span class="s1">oldBalanceOrig</span><span class="se">\&#39;</span><span class="s1"> = </span><span class="se">\</span>
+<span class="se">\&#39;</span><span class="s1">newBalanceOrig</span><span class="se">\&#39;</span><span class="s1"> = 0 aun cuando el monto transado </span><span class="se">\&#39;</span><span class="s1">amount</span><span class="se">\&#39;</span><span class="s1"> sea distinto de 0 es: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+<span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">XnonFraud</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">XnonFraud</span><span class="o">.</span><span class="n">oldBalanceOrig</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> \
+<span class="p">(</span><span class="n">XnonFraud</span><span class="o">.</span><span class="n">newBalanceOrig</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">XnonFraud</span><span class="o">.</span><span class="n">amount</span><span class="p">)])</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">XnonFraud</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La proporción de transacciones FRAUDULENTAS con &#39;oldBalanceOrig&#39; = &#39;newBalanceOrig&#39; = 0 aun cuando el monto transado &#39;amount&#39; sea distinto de 0 es: 0.0030439547059539756
+
+La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;newBalanceOrig&#39; = 0 aun cuando el monto transado &#39;amount&#39; sea distinto de 0 es: 0.4737321319703598
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dado que el balance en 0 de las cuentas receptoras es un fuerte indicador de fraude, se procede a no hacer imputación del balance de la cuenta (en el momento antes de la transacción) con una distribución con una subsecuente ajuste para los montos transados. Si se hace esto, se maquillaría este indicador de fraude y haría que las transsacciones fraudulentas aparecieran como genuinas. Por lo tanto, se reemplazará el valor de 0 con -1, lo que será más util para la contrucción de un algoritmo de Machine Learning que detecte el fraude.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">X</span><span class="o">.</span><span class="n">oldBalanceDest</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">newBalanceDest</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">amount</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">),</span> \
+      <span class="p">[</span><span class="s1">&#39;oldBalanceDest&#39;</span><span class="p">,</span> <span class="s1">&#39;newBalanceDest&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Así como se demostró, los datos también tienen varias transacciones con balances en 0 en las cuentas de origen, antes y después de una transacción con montos distintos de 0. En este caso la proporción de tales transacciones es mucho menor en los casos de fraude (0.3%) comparado a las transacciones genuinas (47%). De manera similar al razonamiento anterior, en vez de imputar un valor numérico, se reemplaza los 0 con un valor nulo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">X</span><span class="o">.</span><span class="n">oldBalanceOrig</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">newBalanceOrig</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">amount</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">),</span> \
+      <span class="p">[</span><span class="s1">&#39;oldBalanceOrig&#39;</span><span class="p">,</span> <span class="s1">&#39;newBalanceOrig&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="ingenieria-de-variables">
+<h2>4. Ingeniería de variables<a class="headerlink" href="#ingenieria-de-variables" title="Permalink to this headline">#</a></h2>
+<p>En vista de la posibilidad de que las cuentas con balance 0 sirvan para diferenciar entre las transacciones fraudulentas de las que no,  se tomó el proceso de imputación de la sección 3.1 un paso más allá y se creó dos nuevas columnas que registren el error en términos de monto en las cuentas de origen y receptoras para cada transacción. Estas nuevas variables resultaron ser importantes para obtener el mejor desempeño del algoritmo de ML que se usará al final.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;errorBalanceOrig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">newBalanceOrig</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">amount</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">oldBalanceOrig</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;errorBalanceDest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">oldBalanceDest</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">amount</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">newBalanceDest</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizacion-de-datos">
+<h2>5. Visualización de datos<a class="headerlink" href="#visualizacion-de-datos" title="Permalink to this headline">#</a></h2>
+<p>La mejor forma de confirmar que los datos contienen suficiente información para que el algoritmo de ML haga predicciones robustas, es intentar visualizar directamente la diferencia entre las transacciones fraudulentas de las genuinas. Bajo este principio, se visualizarán estas diferencias en los gráficos siguientes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Largo de la base</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Creación de la función plotStrip</span>
+<span class="k">def</span> <span class="nf">plotStrip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="n">figsize</span><span class="p">)</span>
+    <span class="n">colours</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">tab10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+    <span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s1">&#39;ticks&#39;</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> \
+             <span class="n">hue</span> <span class="o">=</span> <span class="n">hue</span><span class="p">,</span> <span class="n">jitter</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> \
+             <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="n">colours</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;genuine&#39;</span><span class="p">,</span> <span class="s1">&#39;fraudulent&#39;</span><span class="p">],</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Transfer&#39;</span><span class="p">,</span> <span class="s1">&#39;Cash out&#39;</span><span class="p">],</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> \
+               <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="dispersion-de-las-transacciones-en-el-tiempo">
+<h3>5.1 Dispersión de las transacciones en el tiempo<a class="headerlink" href="#dispersion-de-las-transacciones-en-el-tiempo" title="Permalink to this headline">#</a></h3>
+<p>Este gráfico muestra como las transacciones fraudulentas y las genuinas tienen distintas connotaciones cuando su dispersión es vista en el tiempo. Está claro que las transacciones fraudulentas están más homogeneamente distribuidas en el tiempo en comparación a las genuinas. También es destacable que los retiros superan en número a las transferencias dentro de las transacciones genuinas, en contraste a la distribución balanceada que hay en las transacciones con fraude. Nótese además que se usó el parámetro <em>jitter</em> en la función Plotstrip que se diseñó, para poder separar y diferenciar las transacciones que ocurrian al mismo tiempo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plotStrip</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">step</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">type</span><span class="p">[:</span><span class="n">limit</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;time [hour]&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Striped vs. homogenous fingerprints of genuine and fraudulent </span><span class="se">\</span>
+<span class="s1">transactions over time&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luist\AppData\Local\Temp\ipykernel_7328\1949919385.py:1: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
+  ax = plotStrip(Y[:limit], X.step[:limit], X.type[:limit])
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plotStrip</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">step</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">type</span><span class="p">[:</span><span class="n">limit</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;time [hour]&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Striped vs. homogenous fingerprints of genuine and fraudulent </span><span class="se">\</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="s1"> transactions over time&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="nn">Cell In [17], line 10,</span> in <span class="ni">plotStrip</span><span class="nt">(x, y, hue, figsize)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">colours</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">tab10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s1">&#39;ticks&#39;</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> \
+<span class="g g-Whitespace">     </span><span class="mi">11</span>          <span class="n">hue</span> <span class="o">=</span> <span class="n">hue</span><span class="p">,</span> <span class="n">jitter</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> \
+<span class="g g-Whitespace">     </span><span class="mi">12</span>          <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="n">colours</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;genuine&#39;</span><span class="p">,</span> <span class="s1">&#39;fraudulent&#39;</span><span class="p">],</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: stripplot() takes from 0 to 1 positional arguments but 2 positional arguments (and 4 keyword-only arguments) were given
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1400x900 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dispersion-de-las-transacciones-en-los-montos">
+<h3>5.2 Dispersión de las transacciones en los montos<a class="headerlink" href="#dispersion-de-las-transacciones-en-los-montos" title="Permalink to this headline">#</a></h3>
+<p>Los 2 gráficos muestran que aunque  la presencia de fraude en una transacción puede ser discernida por el monto de la transacción original, la variable creada de error en el balance es más efectiva en hacer esta distinción.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plotStrip</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">amount</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">type</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Same-signed fingerprints of genuine </span><span class="se">\</span>
+<span class="s1">and fraudulent transactions over amount&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">18</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dispersion-de-los-errores-en-el-balance-en-las-cuentas-receptoras">
+<h3>5.3. Dispersión de los errores en el balance en las cuentas receptoras<a class="headerlink" href="#dispersion-de-los-errores-en-el-balance-en-las-cuentas-receptoras" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plotStrip</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">errorBalanceDest</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">type</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> \
+              <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;- errorBalanceDest&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Opposite polarity fingerprints over the error in </span><span class="se">\</span>
+<span class="s1">destination account balances&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">18</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="separacion-de-las-transacciones-genuinas-y-fraudulentas">
+<h3>5.4. Separación de las transacciones genuinas y fraudulentas<a class="headerlink" href="#separacion-de-las-transacciones-genuinas-y-fraudulentas" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="markdown.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">¿Qué encontrar en los archivos?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="markdown-notebooks.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
