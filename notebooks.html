@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Proyecto: Predicting Fraud in Financial Payment Services &#8212; My sample book</title>
+    <title>Proyecto para predecir el fraude financiero en los sistemas de pagos &#8212; My sample book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="next" title="Modelos de clasificación para detección de fraude transaccional" href="markdown-notebooks.html" />
     <link rel="prev" title="¿Qué encontrar en los archivos?" href="markdown.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -121,12 +121,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Proyecto: Predicting Fraud in Financial Payment Services
+   Proyecto para predecir el fraude financiero en los sistemas de pagos
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markdown-notebooks.html">
-   Notebooks with MyST Markdown
+   Modelos de clasificación para detección de fraude transaccional
   </a>
  </li>
 </ul>
@@ -337,14 +337,41 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Proyecto: Predicting Fraud in Financial Payment Services
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos">
    Proyecto para predecir el fraude financiero en los sistemas de pagos
   </a>
   <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-de-la-base">
+     1. Import de la base
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analisis-exploratorio-de-datos">
+     2. Análisis Exploratorio de Datos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transacciones-fraudulentas">
+       2.1. Transacciones fraudulentas
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transacciones-con-alerta-de-fraude">
+       2.2. Transacciones con alerta de fraude
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cash-in">
+       2.3. Cash in
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cash-out">
+       2.4. Cash out
+      </a>
+     </li>
+    </ul>
+   </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#limpieza-de-los-datos">
      3. Limpieza de los datos
@@ -369,12 +396,12 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dispersion-de-las-transacciones-en-el-tiempo">
-       5.1 Dispersión de las transacciones en el tiempo
+       5.1. Dispersión de las transacciones en el tiempo
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dispersion-de-las-transacciones-en-los-montos">
-       5.2 Dispersión de las transacciones en los montos
+       5.2. Dispersión de las transacciones en los montos
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
@@ -382,14 +409,39 @@ title="Print to PDF"
        5.3. Dispersión de los errores en el balance en las cuentas receptoras
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#separacion-de-las-transacciones-genuinas-y-fraudulentas">
-       5.4. Separación de las transacciones genuinas y fraudulentas
-      </a>
-     </li>
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicion-de-conjunto-de-entramiento-y-test">
+   Definición de conjunto de entramiento y test
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelo-logistico">
+   Modelo logístico
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validacion-cruzada-estratificada-con-pipeline">
+   Validación cruzada estratificada con pipeline
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estratificado-pipeline-y-svm">
+   Estratificado pipeline y SVM
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pipeline-logistic-regression">
+   Pipeline Logistic Regression
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest">
+   Random Forest
+  </a>
  </li>
 </ul>
 
@@ -400,7 +452,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Proyecto: Predicting Fraud in Financial Payment Services</h1>
+                <h1>Proyecto para predecir el fraude financiero en los sistemas de pagos</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -412,14 +464,41 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Proyecto: Predicting Fraud in Financial Payment Services
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos">
    Proyecto para predecir el fraude financiero en los sistemas de pagos
   </a>
   <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-de-la-base">
+     1. Import de la base
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analisis-exploratorio-de-datos">
+     2. Análisis Exploratorio de Datos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transacciones-fraudulentas">
+       2.1. Transacciones fraudulentas
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transacciones-con-alerta-de-fraude">
+       2.2. Transacciones con alerta de fraude
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cash-in">
+       2.3. Cash in
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cash-out">
+       2.4. Cash out
+      </a>
+     </li>
+    </ul>
+   </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#limpieza-de-los-datos">
      3. Limpieza de los datos
@@ -444,12 +523,12 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dispersion-de-las-transacciones-en-el-tiempo">
-       5.1 Dispersión de las transacciones en el tiempo
+       5.1. Dispersión de las transacciones en el tiempo
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dispersion-de-las-transacciones-en-los-montos">
-       5.2 Dispersión de las transacciones en los montos
+       5.2. Dispersión de las transacciones en los montos
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
@@ -457,14 +536,39 @@ title="Print to PDF"
        5.3. Dispersión de los errores en el balance en las cuentas receptoras
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#separacion-de-las-transacciones-genuinas-y-fraudulentas">
-       5.4. Separación de las transacciones genuinas y fraudulentas
-      </a>
-     </li>
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definicion-de-conjunto-de-entramiento-y-test">
+   Definición de conjunto de entramiento y test
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelo-logistico">
+   Modelo logístico
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validacion-cruzada-estratificada-con-pipeline">
+   Validación cruzada estratificada con pipeline
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estratificado-pipeline-y-svm">
+   Estratificado pipeline y SVM
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pipeline-logistic-regression">
+   Pipeline Logistic Regression
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest">
+   Random Forest
+  </a>
  </li>
 </ul>
 
@@ -476,13 +580,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="proyecto-predicting-fraud-in-financial-payment-services">
-<h1>Proyecto: Predicting Fraud in Financial Payment Services<a class="headerlink" href="#proyecto-predicting-fraud-in-financial-payment-services" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos">
+  <section class="tex2jax_ignore mathjax_ignore" id="proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos">
 <h1>Proyecto para predecir el fraude financiero en los sistemas de pagos<a class="headerlink" href="#proyecto-para-predecir-el-fraude-financiero-en-los-sistemas-de-pagos" title="Permalink to this headline">#</a></h1>
-<p>Este proyecto es desarrollado por: Luis Daniel Trujillo, Jair Castro y Diego Ramirez</p>
+<p>Este proyecto es desarrollado por: <br />
+Luis Daniel Trujillo <br />
+Jair Castro<br />
+Diego Ramirez</p>
 <p>Fue construido en Python versión 3.8 utilizando Jupyter Book como interprete de Python y Visual Studio Code como editor de codigo.</p>
+<section id="import-de-la-base">
+<h2>1. Import de la base<a class="headerlink" href="#import-de-la-base" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargue de las librerias</span>
@@ -497,8 +603,15 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">pandas_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">learning_curve</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">average_precision_score</span>
-<span class="c1">#from xgboost.sklearn import XGBClassifier</span>
-<span class="c1">#from xgboost import plot_importance, to_graphviz</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span> 
 </pre></div>
 </div>
 </div>
@@ -514,7 +627,74 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import de la base de datos</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;df.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;D:\OneDrive - Universidad del Norte\Documentos\Maestría Estadística\Semestre III\Machine Learning\Proyecto/PS_20174392719_1491204439457_log.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_22828</span><span class="o">/</span><span class="mf">3714026018.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import de la base de datos</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;D:\OneDrive - Universidad del Norte\Documentos\Maestría Estadística\Semestre III\Machine Learning\Proyecto/PS_20174392719_1491204439457_log.csv&quot;</span><span class="p">)</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\util\_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span> 
+<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> 
+<span class="ne">--&gt; </span><span class="mi">586</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span> 
+<span class="g g-Whitespace">    </span><span class="mi">588</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span> 
+<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">482</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span> 
+<span class="g g-Whitespace">    </span><span class="mi">484</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">809</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span> 
+<span class="ne">--&gt; </span><span class="mi">811</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">812</span> 
+<span class="g g-Whitespace">    </span><span class="mi">813</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1038</span>             <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="c1"># error: Too many arguments for &quot;ParserBase&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1040</span>         <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>  <span class="c1"># type: ignore[call-arg]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1041</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1042</span>     <span class="k">def</span> <span class="nf">_failover_to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\c_parser_wrapper.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> 
+<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="c1"># open handles</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_open_handles</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\base_parser.py</span> in <span class="ni">_open_handles</span><span class="nt">(self, src, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="n">Let</span> <span class="n">the</span> <span class="n">readers</span> <span class="nb">open</span> <span class="n">IOHandles</span> <span class="n">after</span> <span class="n">they</span> <span class="n">are</span> <span class="n">done</span> <span class="k">with</span> <span class="n">their</span> <span class="n">potential</span> <span class="n">raises</span><span class="o">.</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">222</span><span class="s2">         self.handles = get_handle(</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span><span class="s2">             src,</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="s2">             &quot;r&quot;,</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span><span class="s2">         if ioargs.encoding and &quot;b&quot; not in ioargs.mode:</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="s2">             # Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">702</span><span class="s2">             handle = open(</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">                 handle,</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">                 ioargs.mode,</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;D:\\OneDrive - Universidad del Norte\\Documentos\\Maestría Estadística\\Semestre III\\Machine Learning\\Proyecto/PS_20174392719_1491204439457_log.csv&#39;
 </pre></div>
 </div>
 </div>
@@ -546,49 +726,467 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Se crea un reporte para la previsualización y conocimiento de la base de datos</p>
+</section>
+<section id="analisis-exploratorio-de-datos">
+<h2>2. Análisis Exploratorio de Datos<a class="headerlink" href="#analisis-exploratorio-de-datos" title="Permalink to this headline">#</a></h2>
+<section id="transacciones-fraudulentas">
+<h3>2.1. Transacciones fraudulentas<a class="headerlink" href="#transacciones-fraudulentas" title="Permalink to this headline">#</a></h3>
+<p>De los cinco tipos de transacciones, el fraude solo ocurre en dos de ellas: <em>Transfer</em> que es cuando se envía dinero a un cliente del banco (o en su defecto, estafador) y <em>Cash out</em> que es cuando se envía dinero a un comerciante para que le pague al cliente (o estafador).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">ProfileReport</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Análisis de las transacciones &#39;</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;style&#39;</span><span class="p">:{</span><span class="s1">&#39;full_width&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">}})</span>
-<span class="n">profile</span><span class="o">.</span><span class="n">to_widgets</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Los tipos de transacciones fraudulentas son </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
+<span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span> 
+                                                             
+
+<span class="n">dfFraudTransfer</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;TRANSFER&#39;</span><span class="p">)]</span> 
+<span class="n">dfFraudCashout</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_OUT&#39;</span><span class="p">)]</span> 
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> El número de transferencias fraudulentas es = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+       <span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfFraudTransfer</span><span class="p">)))</span> 
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> El número de retiros fraudulentos es = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+       <span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfFraudCashout</span><span class="p">)))</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "0856582437a44a908d06753043560557"}
-</script></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Los tipos de transacciones fraudulentas son </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
-<span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span> <span class="c1"># only &#39;CASH_OUT&#39; </span>
-                                                             <span class="c1"># &amp; &#39;TRANSFER&#39;</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Los tipos de transacciones fraudulentas son [&#39;TRANSFER&#39;, &#39;CASH_OUT&#39;]
 
-<span class="n">dfFraudTransfer</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;TRANSFER&#39;</span><span class="p">)]</span>
-<span class="n">dfFraudCashout</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_OUT&#39;</span><span class="p">)]</span>
+ El número de transferencias fraudulentas es = 4097
 
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> El número de transferencias fraudulentas es = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
-       <span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfFraudTransfer</span><span class="p">)))</span> <span class="c1"># 4097</span>
-
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> El número de retiros fraudulentos es CASH_OUTs = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
-       <span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfFraudCashout</span><span class="p">)))</span> <span class="c1"># 4116</span>
+ El número de retiros fraudulentos es = 4116
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="transacciones-con-alerta-de-fraude">
+<h3>2.2. Transacciones con alerta de fraude<a class="headerlink" href="#transacciones-con-alerta-de-fraude" title="Permalink to this headline">#</a></h3>
+<p>Dentro de los tipos de transacciones donde se generó una alerta por posible fraude, solo se encuentró el tipo de transacción <em>transferencia</em>. Donde, el monto <strong>mínimo</strong> alertado fue de 353.874,22 usd y el <strong>máximo</strong> de 92.445.516,64 usd.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Tipos de transacciones en donde se activa la alerta de fraude: </span><span class="se">\</span>
+<span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isFlaggedFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">())))</span> 
+                                                            
+
+<span class="n">dfTransfer</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;TRANSFER&#39;</span><span class="p">]</span>
+<span class="n">dfFlagged</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isFlaggedFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">dfNotFlagged</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isFlaggedFraud</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Cantidad mínima en donde se activa la alerta de fraude = </span><span class="si">{}</span><span class="s1">&#39;</span>\
+                                  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dfFlagged</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Cantidad máxima donde se activa la alerta de fraude =</span><span class="se">\</span>
+<span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dfTransfer</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfTransfer</span><span class="o">.</span><span class="n">isFlaggedFraud</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tipos de transacciones en donde se activa la alerta de fraude: [&#39;TRANSFER&#39;]
+
+Cantidad mínima en donde se activa la alerta de fraude = 353874.22
+
+Cantidad máxima donde se activa la alerta de fraude = 92445516.64
+</pre></div>
+</div>
+</div>
+</div>
+<p>En las transacciones con alerta de fraude se puede identificar que el antiguo y nuevo balance es el mismo en las cuentas de origen y destino. Además, en las transacciones del mismo tipo el antiguo balance de la cuenta destino = 0. Sin embargo, hay transferencias en donde el antiguo y el nuevo balance de la cuenta destino son iguales 0 y no son marcadas como alerta de fraude. Así que esta condición no determina que una transacción sea marcada como alerta de fraude. En conclusión esta variable será descartada.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isFlaggedFraud</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>step</th>
+      <th>type</th>
+      <th>amount</th>
+      <th>nameOrig</th>
+      <th>oldBalanceOrig</th>
+      <th>newBalanceOrig</th>
+      <th>nameDest</th>
+      <th>oldBalanceDest</th>
+      <th>newBalanceDest</th>
+      <th>isFraud</th>
+      <th>isFlaggedFraud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2736446</th>
+      <td>212</td>
+      <td>TRANSFER</td>
+      <td>4953893.08</td>
+      <td>C728984460</td>
+      <td>4953893.08</td>
+      <td>4953893.08</td>
+      <td>C639921569</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3247297</th>
+      <td>250</td>
+      <td>TRANSFER</td>
+      <td>1343002.08</td>
+      <td>C1100582606</td>
+      <td>1343002.08</td>
+      <td>1343002.08</td>
+      <td>C1147517658</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3760288</th>
+      <td>279</td>
+      <td>TRANSFER</td>
+      <td>536624.41</td>
+      <td>C1035541766</td>
+      <td>536624.41</td>
+      <td>536624.41</td>
+      <td>C1100697970</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5563713</th>
+      <td>387</td>
+      <td>TRANSFER</td>
+      <td>4892193.09</td>
+      <td>C908544136</td>
+      <td>4892193.09</td>
+      <td>4892193.09</td>
+      <td>C891140444</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5996407</th>
+      <td>425</td>
+      <td>TRANSFER</td>
+      <td>10000000.00</td>
+      <td>C689608084</td>
+      <td>19585040.37</td>
+      <td>19585040.37</td>
+      <td>C1392803603</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5996409</th>
+      <td>425</td>
+      <td>TRANSFER</td>
+      <td>9585040.37</td>
+      <td>C452586515</td>
+      <td>19585040.37</td>
+      <td>19585040.37</td>
+      <td>C1109166882</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6168499</th>
+      <td>554</td>
+      <td>TRANSFER</td>
+      <td>3576297.10</td>
+      <td>C193696150</td>
+      <td>3576297.10</td>
+      <td>3576297.10</td>
+      <td>C484597480</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6205439</th>
+      <td>586</td>
+      <td>TRANSFER</td>
+      <td>353874.22</td>
+      <td>C1684585475</td>
+      <td>353874.22</td>
+      <td>353874.22</td>
+      <td>C1770418982</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6266413</th>
+      <td>617</td>
+      <td>TRANSFER</td>
+      <td>2542664.27</td>
+      <td>C786455622</td>
+      <td>2542664.27</td>
+      <td>2542664.27</td>
+      <td>C661958277</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6281482</th>
+      <td>646</td>
+      <td>TRANSFER</td>
+      <td>10000000.00</td>
+      <td>C19004745</td>
+      <td>10399045.08</td>
+      <td>10399045.08</td>
+      <td>C1806199534</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6281484</th>
+      <td>646</td>
+      <td>TRANSFER</td>
+      <td>399045.08</td>
+      <td>C724693370</td>
+      <td>10399045.08</td>
+      <td>10399045.08</td>
+      <td>C1909486199</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6296014</th>
+      <td>671</td>
+      <td>TRANSFER</td>
+      <td>3441041.46</td>
+      <td>C917414431</td>
+      <td>3441041.46</td>
+      <td>3441041.46</td>
+      <td>C1082139865</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6351225</th>
+      <td>702</td>
+      <td>TRANSFER</td>
+      <td>3171085.59</td>
+      <td>C1892216157</td>
+      <td>3171085.59</td>
+      <td>3171085.59</td>
+      <td>C1308068787</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6362460</th>
+      <td>730</td>
+      <td>TRANSFER</td>
+      <td>10000000.00</td>
+      <td>C2140038573</td>
+      <td>17316255.05</td>
+      <td>17316255.05</td>
+      <td>C1395467927</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6362462</th>
+      <td>730</td>
+      <td>TRANSFER</td>
+      <td>7316255.05</td>
+      <td>C1869569059</td>
+      <td>17316255.05</td>
+      <td>17316255.05</td>
+      <td>C1861208726</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6362584</th>
+      <td>741</td>
+      <td>TRANSFER</td>
+      <td>5674547.89</td>
+      <td>C992223106</td>
+      <td>5674547.89</td>
+      <td>5674547.89</td>
+      <td>C1366804249</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Número de cuentas marcadas como no fraude con antiguo balance de la cuenta de destino igual a 0 y</span><span class="se">\</span>
+<span class="s1"> nuevo balance de la cuenta de destino igual a 0: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>\
+<span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfTransfer</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">dfTransfer</span><span class="o">.</span><span class="n">isFlaggedFraud</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> \
+<span class="p">(</span><span class="n">dfTransfer</span><span class="o">.</span><span class="n">oldBalanceDest</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dfTransfer</span><span class="o">.</span><span class="n">newBalanceDest</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)])))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de cuentas marcadas como no fraude con antiguo balance de la cuenta de destino igual a 0 y nuevo balance de la cuenta de destino igual a 0: 4158
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cash-in">
+<h3>2.3. Cash in<a class="headerlink" href="#cash-in" title="Permalink to this headline">#</a></h3>
+<p>En esta modalidad de fraude, se le transfiere el dinero a una cuenta (comerciante) que le paga a el estafador. En este caso puede suceder que la cuenta que recibe el dinero sea la misma del estafador. Sin embargo, los datos muestran que no hay cuentas comunes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Hay comerciantes entre las cuentas de origen para las trasacciones de pago </span><span class="se">\</span>
+<span class="s1">en efectivo? </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
+<span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_IN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nameOrig</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">any</span><span class="p">()))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hay comerciantes entre las cuentas de origen para las trasacciones de pago en efectivo? False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cash-out">
+<h3>2.4. Cash out<a class="headerlink" href="#cash-out" title="Permalink to this headline">#</a></h3>
+<p>De igual manera sucede con Cash out. No hay cuentas comunes entre las transacciones y las cuentas que sacan el dinero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Hay comerciantes entre las cuenta de destino para las trasacciones de retiro </span><span class="se">\</span>
+<span class="s1">de efefctivo? </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
+<span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_OUT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nameDest</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">any</span><span class="p">()))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hay comerciantes entre las cuenta de destino para las trasacciones de retiro de efefctivo? False
+</pre></div>
+</div>
+</div>
+</div>
+<p>De hecho, no hay comerciantes entre las cuentas que envian dinero. Solo están en las cuentas que reciben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Hay comerciantes entre las cuentas de origen? </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
+      <span class="n">df</span><span class="o">.</span><span class="n">nameOrig</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()))</span> 
+<span class="c1">#</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Hay otro tipo de transaccion diferente a pagos para </span><span class="se">\</span>
+<span class="s1"> los comerciantes? </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
+<span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">nameDest</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="s1">&#39;PAYMENT&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hay comerciantes entre las cuentas de origen? False
+
+Hay otro tipo de transaccion diferente a pagos para  los comerciantes? False
+</pre></div>
+</div>
+</div>
+</div>
+<p>En conclusión, para todas las transacciones  teniendo en cuenta el número de cuenta destino y origen, la etiqueta comerciante aparece de una forma impredecible. Así que esta variable se descarta.
+Dentro de las cuentas receptoras de transferencias puede suceder que algunas cuentas sean originarias de retiros en efectivo. Sin embargo, los datos muestran que no existen esas cuentas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Dentro de las transacciones fraudulentas hay cuentas destino </span><span class="se">\</span>
+<span class="s1">receptoras de dinero para retiro en efectivo? </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>\
+<span class="p">(</span><span class="n">dfFraudTransfer</span><span class="o">.</span><span class="n">nameDest</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">dfFraudCashout</span><span class="o">.</span><span class="n">nameOrig</span><span class="p">))</span><span class="o">.</span><span class="n">any</span><span class="p">()))</span> <span class="c1"># False</span>
+<span class="n">dfNotFraud</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isFraud</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dentro de las transacciones fraudulentas hay cuentas destino receptoras de dinero para retiro en efectivo? False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Algunas cuentas de destino para tranferencias fraudulentas originaron retiros de efeftivo que no fueron detectados como fraude y fueron marcados como retiros genuinos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Fraudulent TRANSFERs whose destination accounts are originators of </span><span class="se">\</span>
+<span class="s1">genuine CASH_OUTs: </span><span class="se">\n\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dfFraudTransfer</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfFraudTransfer</span><span class="o">.</span><span class="n">nameDest</span><span class="o">.</span>\
+<span class="n">isin</span><span class="p">(</span><span class="n">dfNotFraud</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfNotFraud</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_OUT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nameOrig</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">())]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraudulent TRANSFERs whose destination accounts are originators of genuine CASH_OUTs: 
+
+         step      type      amount     nameOrig  oldBalanceOrig  \
+1030443    65  TRANSFER  1282971.57  C1175896731      1282971.57   
+6039814   486  TRANSFER   214793.32  C2140495649       214793.32   
+6362556   738  TRANSFER   814689.88  C2029041842       814689.88   
+
+         newBalanceOrig     nameDest  oldBalanceDest  newBalanceDest  isFraud  \
+1030443             0.0  C1714931087             0.0             0.0        1   
+6039814             0.0   C423543548             0.0             0.0        1   
+6362556             0.0  C1023330867             0.0             0.0        1   
+
+         isFlaggedFraud  
+1030443               0  
+6039814               0  
+6362556               0  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="limpieza-de-los-datos">
 <h2>3. Limpieza de los datos<a class="headerlink" href="#limpieza-de-los-datos" title="Permalink to this headline">#</a></h2>
-<p>Del Analisis Exploratorio de Datos (AED)nos dimos cuenta que el fraude ocurre solo en las transferencias y los retiros. Por lo tanto vamos a trabajar con una base que tenga solo ese tipo de transacciones</p>
+<p>Del Analisis Exploratorio de Datos (AED) nos dimos cuenta que el fraude ocurre solo en las transferencias y los retiros. Por lo tanto vamos a trabajar con una base que tenga solo ese tipo de transacciones</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se crea un sub data_frame con solo las transacciones TRANSFER y CASH_OUT</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;TRANSFER&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;CASH_OUT&#39;</span><span class="p">)]</span>
-
-<span class="n">randomState</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">randomState</span><span class="p">)</span>
-
-<span class="c1">#X = X.loc[np.random.choice(X.index, 100000, replace = False)]</span>
 
 <span class="c1"># Se pasa la columna fraude a un objeto llamado Y</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]</span>
@@ -674,8 +1272,8 @@ La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;new
 <p>Así como se demostró, los datos también tienen varias transacciones con balances en 0 en las cuentas de origen, antes y después de una transacción con montos distintos de 0. En este caso la proporción de tales transacciones es mucho menor en los casos de fraude (0.3%) comparado a las transacciones genuinas (47%). De manera similar al razonamiento anterior, en vez de imputar un valor numérico, se reemplaza los 0 con un valor nulo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">X</span><span class="o">.</span><span class="n">oldBalanceOrig</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">newBalanceOrig</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">amount</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">),</span> \
-      <span class="p">[</span><span class="s1">&#39;oldBalanceOrig&#39;</span><span class="p">,</span> <span class="s1">&#39;newBalanceOrig&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#X.loc[(X.oldBalanceOrig == 0) &amp; (X.newBalanceOrig == 0) &amp; (X.amount != 0), \</span>
+<span class="c1">#      [&#39;oldBalanceOrig&#39;, &#39;newBalanceOrig&#39;]] = np.nan</span>
 </pre></div>
 </div>
 </div>
@@ -699,16 +1297,14 @@ La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;new
 <p>La mejor forma de confirmar que los datos contienen suficiente información para que el algoritmo de ML haga predicciones robustas, es intentar visualizar directamente la diferencia entre las transacciones fraudulentas de las genuinas. Bajo este principio, se visualizarán estas diferencias en los gráficos siguientes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Largo de la base</span>
-<span class="n">limit</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="c1"># Creación de la función plotStrip</span>
 <span class="k">def</span> <span class="nf">plotStrip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
     
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="n">figsize</span><span class="p">)</span>
     <span class="n">colours</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">tab10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
     <span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s1">&#39;ticks&#39;</span><span class="p">):</span>
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> \
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> \
              <span class="n">hue</span> <span class="o">=</span> <span class="n">hue</span><span class="p">,</span> <span class="n">jitter</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> \
              <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="n">colours</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -725,7 +1321,7 @@ La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;new
 </div>
 </div>
 <section id="dispersion-de-las-transacciones-en-el-tiempo">
-<h3>5.1 Dispersión de las transacciones en el tiempo<a class="headerlink" href="#dispersion-de-las-transacciones-en-el-tiempo" title="Permalink to this headline">#</a></h3>
+<h3>5.1. Dispersión de las transacciones en el tiempo<a class="headerlink" href="#dispersion-de-las-transacciones-en-el-tiempo" title="Permalink to this headline">#</a></h3>
 <p>Este gráfico muestra como las transacciones fraudulentas y las genuinas tienen distintas connotaciones cuando su dispersión es vista en el tiempo. Está claro que las transacciones fraudulentas están más homogeneamente distribuidas en el tiempo en comparación a las genuinas. También es destacable que los retiros superan en número a las transferencias dentro de las transacciones genuinas, en contraste a la distribución balanceada que hay en las transacciones con fraude. Nótese además que se usó el parámetro <em>jitter</em> en la función Plotstrip que se diseñó, para poder separar y diferenciar las transacciones que ocurrian al mismo tiempo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -737,38 +1333,20 @@ La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;new
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luist\AppData\Local\Temp\ipykernel_7328\1949919385.py:1: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luist\AppData\Local\Temp\ipykernel_2460\1949919385.py:1: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
   ax = plotStrip(Y[:limit], X.step[:limit], X.type[:limit])
+C:\Users\luist\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:200: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if palette in QUAL_PALETTES:
+C:\Users\luist\AppData\Local\Temp\ipykernel_2460\3687901914.py:12: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([&#39;genuine&#39;, &#39;fraudulent&#39;], size = 16)
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plotStrip</span><span class="p">(</span><span class="n">Y</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">step</span><span class="p">[:</span><span class="n">limit</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">type</span><span class="p">[:</span><span class="n">limit</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;time [hour]&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Striped vs. homogenous fingerprints of genuine and fraudulent </span><span class="se">\</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="s1"> transactions over time&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
-
-<span class="nn">Cell In [17], line 10,</span> in <span class="ni">plotStrip</span><span class="nt">(x, y, hue, figsize)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">colours</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">tab10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s1">&#39;ticks&#39;</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> \
-<span class="g g-Whitespace">     </span><span class="mi">11</span>          <span class="n">hue</span> <span class="o">=</span> <span class="n">hue</span><span class="p">,</span> <span class="n">jitter</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> \
-<span class="g g-Whitespace">     </span><span class="mi">12</span>          <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="n">colours</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;genuine&#39;</span><span class="p">,</span> <span class="s1">&#39;fraudulent&#39;</span><span class="p">],</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: stripplot() takes from 0 to 1 positional arguments but 2 positional arguments (and 4 keyword-only arguments) were given
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1400x900 with 0 Axes&gt;
-</pre></div>
-</div>
+<img alt="_images/notebooks_40_1.png" src="_images/notebooks_40_1.png" />
 </div>
 </div>
 </section>
 <section id="dispersion-de-las-transacciones-en-los-montos">
-<h3>5.2 Dispersión de las transacciones en los montos<a class="headerlink" href="#dispersion-de-las-transacciones-en-los-montos" title="Permalink to this headline">#</a></h3>
+<h3>5.2. Dispersión de las transacciones en los montos<a class="headerlink" href="#dispersion-de-las-transacciones-en-los-montos" title="Permalink to this headline">#</a></h3>
 <p>Los 2 gráficos muestran que aunque  la presencia de fraude en una transacción puede ser discernida por el monto de la transacción original, la variable creada de error en el balance es más efectiva en hacer esta distinción.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -779,6 +1357,17 @@ La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;new
 <span class="s1">and fraudulent transactions over amount&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">18</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luist\AppData\Local\Temp\ipykernel_2460\442509842.py:2: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
+  ax = plotStrip(Y[:limit], X.amount[:limit], X.type[:limit], figsize = (14, 9))
+C:\Users\luist\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:200: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if palette in QUAL_PALETTES:
+C:\Users\luist\AppData\Local\Temp\ipykernel_2460\3687901914.py:12: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([&#39;genuine&#39;, &#39;fraudulent&#39;], size = 16)
+</pre></div>
+</div>
+<img alt="_images/notebooks_42_1.png" src="_images/notebooks_42_1.png" />
 </div>
 </div>
 </section>
@@ -795,12 +1384,607 @@ La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;new
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luist\AppData\Local\Temp\ipykernel_2460\1755144090.py:2: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
+  ax = plotStrip(Y[:limit], - X.errorBalanceDest[:limit], X.type[:limit], \
+C:\Users\luist\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:200: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if palette in QUAL_PALETTES:
+C:\Users\luist\AppData\Local\Temp\ipykernel_2460\3687901914.py:12: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_xticklabels([&#39;genuine&#39;, &#39;fraudulent&#39;], size = 16)
+</pre></div>
+</div>
+<img alt="_images/notebooks_44_1.png" src="_images/notebooks_44_1.png" />
+</div>
 </div>
 </section>
-<section id="separacion-de-las-transacciones-genuinas-y-fraudulentas">
-<h3>5.4. Separación de las transacciones genuinas y fraudulentas<a class="headerlink" href="#separacion-de-las-transacciones-genuinas-y-fraudulentas" title="Permalink to this headline">#</a></h3>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="definicion-de-conjunto-de-entramiento-y-test">
+<h1>Definición de conjunto de entramiento y test<a class="headerlink" href="#definicion-de-conjunto-de-entramiento-y-test" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_sub</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">Y_sub</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">22</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_c</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_c</span> <span class="o">=</span> <span class="n">df_c</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">22</span><span class="p">)</span>
+<span class="n">df_c</span>
+<span class="n">Y_sub</span> <span class="o">=</span> <span class="n">df_c</span><span class="p">[</span><span class="s1">&#39;isFraud&#39;</span><span class="p">]</span>
+<span class="n">Y_sub</span>
+<span class="n">X_sub</span> <span class="o">=</span> <span class="n">df_c</span><span class="p">[[</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">,</span> <span class="s1">&#39;oldBalanceOrig&#39;</span><span class="p">,</span> <span class="s1">&#39;newBalanceOrig&#39;</span><span class="p">,</span> <span class="s1">&#39;oldBalanceDest&#39;</span><span class="p">,</span> <span class="s1">&#39;newBalanceDest&#39;</span><span class="p">,</span> <span class="s1">&#39;errorBalanceOrig&#39;</span><span class="p">,</span> <span class="s1">&#39;errorBalanceDest&#39;</span><span class="p">]]</span>
+<span class="n">X_sub</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>step</th>
+      <th>type</th>
+      <th>amount</th>
+      <th>oldBalanceOrig</th>
+      <th>newBalanceOrig</th>
+      <th>oldBalanceDest</th>
+      <th>newBalanceDest</th>
+      <th>errorBalanceOrig</th>
+      <th>errorBalanceDest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4559928</th>
+      <td>327</td>
+      <td>1</td>
+      <td>539307.42</td>
+      <td>361787.37</td>
+      <td>0.00</td>
+      <td>1127658.08</td>
+      <td>1666965.50</td>
+      <td>177520.05</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3661435</th>
+      <td>275</td>
+      <td>1</td>
+      <td>84542.90</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1069891.14</td>
+      <td>1154434.03</td>
+      <td>84542.90</td>
+      <td>1.000000e-02</td>
+    </tr>
+    <tr>
+      <th>274299</th>
+      <td>15</td>
+      <td>1</td>
+      <td>155126.18</td>
+      <td>48774.00</td>
+      <td>0.00</td>
+      <td>919620.49</td>
+      <td>1074746.67</td>
+      <td>106352.18</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>5088257</th>
+      <td>355</td>
+      <td>1</td>
+      <td>127298.09</td>
+      <td>14606.00</td>
+      <td>0.00</td>
+      <td>8870710.37</td>
+      <td>8998008.47</td>
+      <td>112692.09</td>
+      <td>-1.000000e-02</td>
+    </tr>
+    <tr>
+      <th>2164679</th>
+      <td>184</td>
+      <td>1</td>
+      <td>270955.21</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1432038.71</td>
+      <td>1702993.92</td>
+      <td>270955.21</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6125621</th>
+      <td>540</td>
+      <td>1</td>
+      <td>319001.47</td>
+      <td>308583.00</td>
+      <td>0.00</td>
+      <td>115152.22</td>
+      <td>434153.69</td>
+      <td>10418.47</td>
+      <td>-5.820766e-11</td>
+    </tr>
+    <tr>
+      <th>1543485</th>
+      <td>154</td>
+      <td>1</td>
+      <td>256534.35</td>
+      <td>305978.00</td>
+      <td>49443.65</td>
+      <td>0.00</td>
+      <td>256534.35</td>
+      <td>0.00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3853669</th>
+      <td>283</td>
+      <td>1</td>
+      <td>98898.04</td>
+      <td>202.00</td>
+      <td>0.00</td>
+      <td>728610.15</td>
+      <td>827508.19</td>
+      <td>98696.04</td>
+      <td>1.164153e-10</td>
+    </tr>
+    <tr>
+      <th>4424505</th>
+      <td>322</td>
+      <td>1</td>
+      <td>255414.20</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>422819.00</td>
+      <td>678233.20</td>
+      <td>255414.20</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3616076</th>
+      <td>273</td>
+      <td>0</td>
+      <td>379620.28</td>
+      <td>465.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>379620.28</td>
+      <td>379155.28</td>
+      <td>0.000000e+00</td>
+    </tr>
+  </tbody>
+</table>
+<p>10000 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_sub</span><span class="p">,</span> <span class="n">Y_sub</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">stratify</span> <span class="o">=</span> <span class="n">Y_sub</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modelo-logistico">
+<h1>Modelo logístico<a class="headerlink" href="#modelo-logistico" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#instanciamos la regresión logística</span>
+<span class="n">logreg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set score: &quot;</span><span class="p">,</span> <span class="n">logreg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train set score: &quot;</span><span class="p">,</span><span class="n">logreg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test set score:  0.998
+Train set score:  0.9973333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logreg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logreg</span><span class="p">,</span> <span class="n">X_sub</span><span class="p">,</span> <span class="n">Y_sub</span><span class="p">);</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validation scores: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.9955 0.996  0.999  0.998  0.9975]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">logreg</span><span class="p">,</span> <span class="n">X_sub</span><span class="p">,</span> <span class="n">Y_sub</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validation scores: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.995 0.997 0.996 0.996 0.999 0.999 0.999 0.997 0.997 0.998]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average cross-validation score: &quot;</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average cross-validation score:  0.9972999999999999
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validation scores:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">logreg</span><span class="p">,</span> <span class="n">X_sub</span><span class="p">,</span> <span class="n">Y_sub</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores:
+[0.99730054 0.99789979 0.99729973]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="validacion-cruzada-estratificada-con-pipeline">
+<h1>Validación cruzada estratificada con pipeline<a class="headerlink" href="#validacion-cruzada-estratificada-con-pipeline" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="estratificado-pipeline-y-svm">
+<h1>Estratificado pipeline y SVM<a class="headerlink" href="#estratificado-pipeline-y-svm" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;svm&quot;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">())])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Pipeline(steps=[(&#39;scaler&#39;, MinMaxScaler()), (&#39;svm&#39;, SVC())])</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-5 {color: black;background-color: white;}#sk-container-id-5 pre{padding: 0;}#sk-container-id-5 div.sk-toggleable {background-color: white;}#sk-container-id-5 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-5 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-5 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-5 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-5 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-5 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-5 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-5 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-5 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-5 div.sk-item {position: relative;z-index: 1;}#sk-container-id-5 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-5 div.sk-item::before, #sk-container-id-5 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-5 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-5 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-5 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-5 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-5 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-5 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-5 div.sk-label-container {text-align: center;}#sk-container-id-5 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-5 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, MinMaxScaler()), (&#x27;svm&#x27;, SVC())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox" ><label for="sk-estimator-id-13" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, MinMaxScaler()), (&#x27;svm&#x27;, SVC())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox" ><label for="sk-estimator-id-14" class="sk-toggleable__label sk-toggleable__label-arrow">MinMaxScaler</label><div class="sk-toggleable__content"><pre>MinMaxScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-15" type="checkbox" ><label for="sk-estimator-id-15" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC()</pre></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">&#39;svm&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">())])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-6 {color: black;background-color: white;}#sk-container-id-6 pre{padding: 0;}#sk-container-id-6 div.sk-toggleable {background-color: white;}#sk-container-id-6 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-6 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-6 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-6 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-6 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-6 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-6 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-6 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-6 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-6 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-6 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-6 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-6 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-6 div.sk-item {position: relative;z-index: 1;}#sk-container-id-6 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-6 div.sk-item::before, #sk-container-id-6 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-6 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-6 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-6 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-6 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-6 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-6 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-6 div.sk-label-container {text-align: center;}#sk-container-id-6 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-6 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, MinMaxScaler()), (&#x27;svm&#x27;, SVC())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-16" type="checkbox" ><label for="sk-estimator-id-16" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, MinMaxScaler()), (&#x27;svm&#x27;, SVC())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-17" type="checkbox" ><label for="sk-estimator-id-17" class="sk-toggleable__label sk-toggleable__label-arrow">MinMaxScaler</label><div class="sk-toggleable__content"><pre>MinMaxScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-18" type="checkbox" ><label for="sk-estimator-id-18" class="sk-toggleable__label sk-toggleable__label-arrow">SVC</label><div class="sk-toggleable__content"><pre>SVC()</pre></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test score: &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test score:  0.9968
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;svm__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> 
+              <span class="s1">&#39;svm__gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best cross-validation accuracy: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set score: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best parameters: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best cross-validation accuracy: 0.9977
+Test set score: 0.9972
+Best parameters: {&#39;svm__C&#39;: 100, &#39;svm__gamma&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<span class="n">close_zero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thresholds</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">precision</span><span class="p">[</span><span class="n">close_zero</span><span class="p">],</span> <span class="n">recall</span><span class="p">[</span><span class="n">close_zero</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;threshold zero&quot;</span><span class="p">,</span> <span class="n">fillstyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;precision recall curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Precision&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Recall&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_65_0.png" src="_images/notebooks_65_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ParameterGrid</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pipeline-logistic-regression">
+<h1>Pipeline Logistic Regression<a class="headerlink" href="#pipeline-logistic-regression" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ajsutar porque este es el de Darit</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;logisticregression__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">MinMaxScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">22</span><span class="p">))</span>
+
+<span class="n">log_gs</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">)</span>
+
+<span class="n">log_grid</span> <span class="o">=</span> <span class="n">log_gs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9330357142857143
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="random-forest">
+<h1>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;preprocessing&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">())])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;classifier&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">SVC</span><span class="p">()],</span> <span class="s1">&#39;preprocessing&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="kc">None</span><span class="p">],</span>
+               <span class="s1">&#39;classifier__gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+               <span class="s1">&#39;classifier__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]},</span>
+              <span class="p">{</span><span class="s1">&#39;classifier&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)],</span>
+               <span class="s1">&#39;preprocessing&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="s1">&#39;classifier__max_features&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best params:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best cross-validation score: </span><span class="si">{:.6f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test-set score: </span><span class="si">{:.6f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best params:
+{&#39;classifier&#39;: RandomForestClassifier(max_features=2), &#39;classifier__max_features&#39;: 2, &#39;preprocessing&#39;: None}
+
+Best cross-validation score: 0.999067
+Test-set score: 0.999600
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      2492
+           1       1.00      0.88      0.93         8
+
+    accuracy                           1.00      2500
+   macro avg       1.00      0.94      0.97      2500
+weighted avg       1.00      1.00      1.00      2500
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">precision_rf</span><span class="p">,</span> <span class="n">recall_rf</span><span class="p">,</span> <span class="n">thresholds_rf</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;svc&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">precision</span><span class="p">[</span><span class="n">close_zero</span><span class="p">],</span> <span class="n">recall</span><span class="p">[</span><span class="n">close_zero</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> 
+         <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;threshold zero svc&quot;</span><span class="p">,</span> <span class="n">fillstyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">precision_rf</span><span class="p">,</span> <span class="n">recall_rf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;rf&quot;</span><span class="p">)</span>
+
+<span class="n">close_default_rf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thresholds_rf</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">precision_rf</span><span class="p">[</span><span class="n">close_default_rf</span><span class="p">],</span> <span class="n">recall_rf</span><span class="p">[</span><span class="n">close_default_rf</span><span class="p">],</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+         <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;threshold 0.5 rf&quot;</span><span class="p">,</span> <span class="n">fillstyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Precision&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Recall&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_78_0.png" src="_images/notebooks_78_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f1_score of random forest: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f1_score of svc: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f1_score of log: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">log_grid</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f1_score of random forest: 0.933
+f1_score of svc: 0.000
+f1_score of log: 0.222
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#svc</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+
+<span class="c1">#regresion log</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">log_grid</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+
+<span class="c1">#random forest</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      2492
+           1       0.00      0.00      0.00         8
+
+    accuracy                           1.00      2500
+   macro avg       0.50      0.50      0.50      2500
+weighted avg       0.99      1.00      1.00      2500
+
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      2492
+           1       1.00      0.12      0.22         8
+
+    accuracy                           1.00      2500
+   macro avg       1.00      0.56      0.61      2500
+weighted avg       1.00      1.00      1.00      2500
+
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      2492
+           1       1.00      0.88      0.93         8
+
+    accuracy                           1.00      2500
+   macro avg       1.00      0.94      0.97      2500
+weighted avg       1.00      1.00      1.00      2500
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\Archivos de Programas\Python\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+d:\Archivos de Programas\Python\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+d:\Archivos de Programas\Python\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -840,7 +2024,7 @@ La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;new
     <a class='right-next' id="next-link" href="markdown-notebooks.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+        <p class="prev-next-title">Modelos de clasificación para detección de fraude transaccional</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

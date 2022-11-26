@@ -13,42 +13,19 @@ kernelspec:
   name: python3
 ---
 
-# Notebooks with MyST Markdown
+# Modelos de clasificación para detección de fraude transaccional
 
-Jupyter Book also lets you write text-based notebooks using MyST Markdown.
-See [the Notebooks with MyST Markdown documentation](https://jupyterbook.org/file-types/myst-notebooks.html) for more detailed instructions.
-This page shows off a notebook written in MyST Markdown.
+Los modelos de Machine Learning utilizados para determinar si una transacción es fraudulenta o no se basan en Regresión Logística, Maquina de Soporte Vectorial y Random Forest. Estos modelos son ajustados por medio de validación cruzada estratficada toda vez que la variable de respuesta (booleana que indica si hay fraude o no), se encuentra desbalanceada toda vez que las transacciones fraudulentas tienden a una menor proporción respecto de las no fraudulentas.
 
-## An example cell
+En ese orden de ideas, se presentan los resultados (scoring) de los tres modelos con la validación cruzada y se exponen los resultados de la regresión logística sin validación cruzada. Por razones de capacidad de procesamiento se tomó una muestra para la construcción del modelo y validación del algoritmo.
 
-With MyST Markdown, you can define code cells with a directive like so:
-
-```{code-cell}
-print(2 + 2)
+```{Nota}
+Se considera un score bueno cuando está por encima del 80%
 ```
 
-When your book is built, the contents of any `{code-cell}` blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.
+## Pipelines 
 
-```{seealso}
-Jupyter Book uses [Jupytext](https://jupytext.readthedocs.io/en/latest/) to convert text-based files to notebooks, and can support [many other text-based notebook files](https://jupyterbook.org/file-types/jupytext.html).
-```
+Los pipelines son herramientas que se han desarrollado para optimizar el código de la maquina de aprendizaje, permiten mejorar el rendimiento del procesamiento y reducen el costo computacional.
 
-## Create a notebook with MyST Markdown
+Para más información consultar la siguiente documentación de [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html)
 
-MyST Markdown notebooks are defined by two things:
-
-1. YAML metadata that is needed to understand if / how it should convert text files to notebooks (including information about the kernel needed).
-   See the YAML at the top of this page for example.
-2. The presence of `{code-cell}` directives, which will be executed with your book.
-
-That's all that is needed to get started!
-
-## Quickly add YAML metadata for MyST Notebooks
-
-If you have a markdown file and you'd like to quickly add YAML metadata to it, so that Jupyter Book will treat it as a MyST Markdown Notebook, run the following command:
-
-```
-jupyter-book myst init path/to/markdownfile.md
-```
