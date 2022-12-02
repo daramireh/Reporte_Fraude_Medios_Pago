@@ -647,74 +647,7 @@ Diego Ramirez</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import de la base de datos</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;D:\OneDrive - Universidad del Norte\Documentos\Maestría Estadística\Semestre III\Machine Learning\Proyecto/PS_20174392719_1491204439457_log.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_4136</span><span class="o">/</span><span class="mf">3714026018.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import de la base de datos</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;D:\OneDrive - Universidad del Norte\Documentos\Maestría Estadística\Semestre III\Machine Learning\Proyecto/PS_20174392719_1491204439457_log.csv&quot;</span><span class="p">)</span>
-
-<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\util\_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span> 
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
-
-<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> 
-<span class="ne">--&gt; </span><span class="mi">586</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span> 
-<span class="g g-Whitespace">    </span><span class="mi">588</span> 
-
-<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span> 
-<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">482</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span> 
-<span class="g g-Whitespace">    </span><span class="mi">484</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-
-<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">809</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">810</span> 
-<span class="ne">--&gt; </span><span class="mi">811</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">812</span> 
-<span class="g g-Whitespace">    </span><span class="mi">813</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1038</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="c1"># error: Too many arguments for &quot;ParserBase&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1040</span>         <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>  <span class="c1"># type: ignore[call-arg]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1041</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1042</span>     <span class="k">def</span> <span class="nf">_failover_to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\c_parser_wrapper.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> 
-<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="c1"># open handles</span>
-<span class="ne">---&gt; </span><span class="mi">51</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_open_handles</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> 
-
-<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\parsers\base_parser.py</span> in <span class="ni">_open_handles</span><span class="nt">(self, src, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="n">Let</span> <span class="n">the</span> <span class="n">readers</span> <span class="nb">open</span> <span class="n">IOHandles</span> <span class="n">after</span> <span class="n">they</span> <span class="n">are</span> <span class="n">done</span> <span class="k">with</span> <span class="n">their</span> <span class="n">potential</span> <span class="n">raises</span><span class="o">.</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">222</span><span class="s2">         self.handles = get_handle(</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span><span class="s2">             src,</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="s2">             &quot;r&quot;,</span>
-
-<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\pandas\io\common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span><span class="s2">         if ioargs.encoding and &quot;b&quot; not in ioargs.mode:</span>
-<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="s2">             # Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">702</span><span class="s2">             handle = open(</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">                 handle,</span>
-<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">                 ioargs.mode,</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;D:\\OneDrive - Universidad del Norte\\Documentos\\Maestría Estadística\\Semestre III\\Machine Learning\\Proyecto/PS_20174392719_1491204439457_log.csv&#39;
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;df.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -773,8 +706,9 @@ Diego Ramirez</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Los tipos de transacciones fraudulentas son [&#39;TRANSFER&#39;, &#39;CASH_OUT&#39;]
-
- El número de transferencias fraudulentas es = 4097
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> El número de transferencias fraudulentas es = 4097
 
  El número de retiros fraudulentos es = 4116
 </pre></div>
@@ -805,8 +739,9 @@ Diego Ramirez</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tipos de transacciones en donde se activa la alerta de fraude: [&#39;TRANSFER&#39;]
-
-Cantidad mínima en donde se activa la alerta de fraude = 353874.22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cantidad mínima en donde se activa la alerta de fraude = 353874.22
 
 Cantidad máxima donde se activa la alerta de fraude = 92445516.64
 </pre></div>
@@ -1146,8 +1081,9 @@ Cantidad máxima donde se activa la alerta de fraude = 92445516.64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hay comerciantes entre las cuentas de origen? False
-
-Hay otro tipo de transaccion diferente a pagos para  los comerciantes? False
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hay otro tipo de transaccion diferente a pagos para  los comerciantes? False
 </pre></div>
 </div>
 </div>
@@ -1355,15 +1291,7 @@ La proporción de transacciones GENUINAS con &#39;oldBalanceOrig&#39; = &#39;new
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luist\AppData\Local\Temp\ipykernel_62908\447256613.py:1: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
-  ax = plotStrip(Y[:limit], X.step[:limit], X.type[:limit])
-C:\Users\luist\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:200: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  if palette in QUAL_PALETTES:
-C:\Users\luist\AppData\Local\Temp\ipykernel_62908\3687901914.py:12: UserWarning: FixedFormatter should only be used together with FixedLocator
-  ax.set_xticklabels([&#39;genuine&#39;, &#39;fraudulent&#39;], size = 16)
-</pre></div>
-</div>
-<img alt="_images/notebooks_40_1.png" src="_images/notebooks_40_1.png" />
+<img alt="_images/notebooks_40_0.png" src="_images/notebooks_40_0.png" />
 </div>
 </div>
 </section>
@@ -1381,15 +1309,7 @@ C:\Users\luist\AppData\Local\Temp\ipykernel_62908\3687901914.py:12: UserWarning:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luist\AppData\Local\Temp\ipykernel_62908\4212471206.py:2: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
-  ax = plotStrip(Y[:limit], X.amount[:limit], X.type[:limit], figsize = (14, 9))
-C:\Users\luist\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:200: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  if palette in QUAL_PALETTES:
-C:\Users\luist\AppData\Local\Temp\ipykernel_62908\3687901914.py:12: UserWarning: FixedFormatter should only be used together with FixedLocator
-  ax.set_xticklabels([&#39;genuine&#39;, &#39;fraudulent&#39;], size = 16)
-</pre></div>
-</div>
-<img alt="_images/notebooks_42_1.png" src="_images/notebooks_42_1.png" />
+<img alt="_images/notebooks_42_0.png" src="_images/notebooks_42_0.png" />
 </div>
 </div>
 </section>
@@ -1407,15 +1327,7 @@ C:\Users\luist\AppData\Local\Temp\ipykernel_62908\3687901914.py:12: UserWarning:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\luist\AppData\Local\Temp\ipykernel_62908\2401563632.py:2: FutureWarning: The behavior of `series[i:j]` with an integer-dtype index is deprecated. In a future version, this will be treated as *label-based* indexing, consistent with e.g. `series[i]` lookups. To retain the old behavior, use `series.iloc[i:j]`. To get the future behavior, use `series.loc[i:j]`.
-  ax = plotStrip(Y[:limit], - X.errorBalanceDest[:limit], X.type[:limit], \
-C:\Users\luist\AppData\Roaming\Python\Python310\site-packages\seaborn\_oldcore.py:200: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  if palette in QUAL_PALETTES:
-C:\Users\luist\AppData\Local\Temp\ipykernel_62908\3687901914.py:12: UserWarning: FixedFormatter should only be used together with FixedLocator
-  ax.set_xticklabels([&#39;genuine&#39;, &#39;fraudulent&#39;], size = 16)
-</pre></div>
-</div>
-<img alt="_images/notebooks_44_1.png" src="_images/notebooks_44_1.png" />
+<img alt="_images/notebooks_44_0.png" src="_images/notebooks_44_0.png" />
 </div>
 </div>
 </section>
@@ -1462,8 +1374,8 @@ C:\Users\luist\AppData\Local\Temp\ipykernel_62908\3687901914.py:12: UserWarning:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test set score:  0.938
-Train set score:  0.9393333333333334
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test set score:  0.91
+Train set score:  0.9513333333333334
 </pre></div>
 </div>
 </div>
@@ -1483,7 +1395,7 @@ Train set score:  0.9393333333333334
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.93   0.94   0.9475 0.9275 0.925 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.9375 0.9175 0.9325 0.94   0.955 ]
 </pre></div>
 </div>
 </div>
@@ -1496,7 +1408,7 @@ Train set score:  0.9393333333333334
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.915 0.955 0.93  0.935 0.965 0.94  0.965 0.895 0.92  0.93 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.925 0.935 0.945 0.915 0.91  0.96  0.925 0.96  0.965 0.945]
 </pre></div>
 </div>
 </div>
@@ -1508,7 +1420,7 @@ Train set score:  0.9393333333333334
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average cross-validation score:  0.9349999999999999
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average cross-validation score:  0.9385
 </pre></div>
 </div>
 </div>
@@ -1522,7 +1434,7 @@ Train set score:  0.9393333333333334
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores:
-[0.91904048 0.94002999 0.94894895]
+[0.92803598 0.94452774 0.93993994]
 </pre></div>
 </div>
 </div>
@@ -1549,7 +1461,7 @@ Train set score:  0.9393333333333334
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test score:  0.822
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test score:  0.814
 </pre></div>
 </div>
 </div>
@@ -1569,7 +1481,7 @@ Train set score:  0.9393333333333334
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best cross-validation accuracy: 0.9293
-Test set score: 0.9120
+Test set score: 0.9240
 Best parameters: {&#39;svm__C&#39;: 100, &#39;svm__gamma&#39;: 10}
 </pre></div>
 </div>
@@ -1626,7 +1538,7 @@ Best parameters: {&#39;svm__C&#39;: 100, &#39;svm__gamma&#39;: 10}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.964496
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9536319999999999
 </pre></div>
 </div>
 </div>
@@ -1671,11 +1583,156 @@ Best parameters: {&#39;svm__C&#39;: 100, &#39;svm__gamma&#39;: 10}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best params:
-{&#39;classifier&#39;: RandomForestClassifier(max_features=1), &#39;classifier__max_features&#39;: 1, &#39;preprocessing&#39;: None}
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_11296</span><span class="o">/</span><span class="mf">2156199655.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best params:</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best cross-validation score: </span><span class="si">{:.6f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
 
-Best cross-validation score: 0.995333
-Test-set score: 0.990000
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\model_selection\_search.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y, groups, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">889</span>                 <span class="k">return</span> <span class="n">results</span>
+<span class="g g-Whitespace">    </span><span class="mi">890</span> 
+<span class="ne">--&gt; </span><span class="mi">891</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">892</span> 
+<span class="g g-Whitespace">    </span><span class="mi">893</span>             <span class="c1"># multimetric is determined here because in the case of a callable</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\model_selection\_search.py</span> in <span class="ni">_run_search</span><span class="nt">(self, evaluate_candidates)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1390</span>     <span class="k">def</span> <span class="nf">_run_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_candidates</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1391</span>         <span class="sd">&quot;&quot;&quot;Search all candidates in param_grid&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1392</span>         <span class="n">evaluate_candidates</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grid</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1393</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1394</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\model_selection\_search.py</span> in <span class="ni">evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
+<span class="g g-Whitespace">    </span><span class="mi">836</span>                     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">837</span> 
+<span class="ne">--&gt; </span><span class="mi">838</span>                 <span class="n">out</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span>                     <span class="n">delayed</span><span class="p">(</span><span class="n">_fit_and_score</span><span class="p">)(</span>
+<span class="g g-Whitespace">    </span><span class="mi">840</span>                         <span class="n">clone</span><span class="p">(</span><span class="n">base_estimator</span><span class="p">),</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\joblib\parallel.py</span> in <span class="ni">__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1044</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_iterating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_original_iterator</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1045</span> 
+<span class="ne">-&gt; </span><span class="mi">1046</span>             <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">dispatch_one_batch</span><span class="p">(</span><span class="n">iterator</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1047</span>                 <span class="k">pass</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\joblib\parallel.py</span> in <span class="ni">dispatch_one_batch</span><span class="nt">(self, iterator)</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>                 <span class="k">return</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">861</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_dispatch</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">862</span>                 <span class="k">return</span> <span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">863</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\joblib\parallel.py</span> in <span class="ni">_dispatch</span><span class="nt">(self, batch)</span>
+<span class="g g-Whitespace">    </span><span class="mi">777</span>         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">778</span>             <span class="n">job_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jobs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">779</span>             <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">cb</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">780</span>             <span class="c1"># A job can complete so quickly than its callback is</span>
+<span class="g g-Whitespace">    </span><span class="mi">781</span>             <span class="c1"># called before we get here, causing self._jobs to</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\joblib\_parallel_backends.py</span> in <span class="ni">apply_async</span><span class="nt">(self, func, callback)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="k">def</span> <span class="nf">apply_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="sd">&quot;&quot;&quot;Schedule a func to be run&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">208</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">ImmediateResult</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="k">if</span> <span class="n">callback</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>             <span class="n">callback</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\joblib\_parallel_backends.py</span> in <span class="ni">__init__</span><span class="nt">(self, batch)</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>         <span class="c1"># Don&#39;t delay the application, to avoid keeping the input</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span>         <span class="c1"># arguments in memory</span>
+<span class="ne">--&gt; </span><span class="mi">572</span>         <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">batch</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span> 
+<span class="g g-Whitespace">    </span><span class="mi">574</span>     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\joblib\parallel.py</span> in <span class="ni">__call__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span>         <span class="c1"># change the default number of processes to -1</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span>         <span class="k">with</span> <span class="n">parallel_backend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_n_jobs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">262</span>             <span class="k">return</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span>                     <span class="k">for</span> <span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\joblib\parallel.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span>         <span class="c1"># change the default number of processes to -1</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span>         <span class="k">with</span> <span class="n">parallel_backend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_n_jobs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">262</span>             <span class="k">return</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span>                     <span class="k">for</span> <span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\utils\fixes.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">211</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> 
+<span class="g g-Whitespace">    </span><span class="mi">213</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\model_selection\_validation.py</span> in <span class="ni">_fit_and_score</span><span class="nt">(estimator, X, y, scorer, train, test, verbose, parameters, fit_params, return_train_score, return_parameters, return_n_test_samples, return_times, return_estimator, split_progress, candidate_progress, error_score)</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span> 
+<span class="g g-Whitespace">    </span><span class="mi">702</span>         <span class="n">fit_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+<span class="ne">--&gt; </span><span class="mi">703</span>         <span class="n">test_scores</span> <span class="o">=</span> <span class="n">_score</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span> <span class="n">error_score</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span>         <span class="n">score_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span> <span class="o">-</span> <span class="n">fit_time</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>         <span class="k">if</span> <span class="n">return_train_score</span><span class="p">:</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\model_selection\_validation.py</span> in <span class="ni">_score</span><span class="nt">(estimator, X_test, y_test, scorer, error_score)</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span>             <span class="n">scores</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">761</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">762</span>             <span class="n">scores</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span>     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span>         <span class="k">if</span> <span class="n">error_score</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\metrics\_scorer.py</span> in <span class="ni">_passthrough_scorer</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="k">def</span> <span class="nf">_passthrough_scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>     <span class="sd">&quot;&quot;&quot;Function that wraps estimator.score&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">418</span>     <span class="k">return</span> <span class="n">estimator</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">419</span> 
+<span class="g g-Whitespace">    </span><span class="mi">420</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\utils\metaestimators.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span> 
+<span class="g g-Whitespace">    </span><span class="mi">112</span>             <span class="c1"># lambda, but not partial, allows help() to work with update_wrapper</span>
+<span class="ne">--&gt; </span><span class="mi">113</span>             <span class="n">out</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># noqa</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\pipeline.py</span> in <span class="ni">score</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span>         <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">710</span>             <span class="n">score_params</span><span class="p">[</span><span class="s2">&quot;sample_weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_weight</span>
+<span class="ne">--&gt; </span><span class="mi">711</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Xt</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">score_params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">712</span> 
+<span class="g g-Whitespace">    </span><span class="mi">713</span>     <span class="nd">@property</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\base.py</span> in <span class="ni">score</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">644</span>         <span class="kn">from</span> <span class="nn">.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="g g-Whitespace">    </span><span class="mi">645</span> 
+<span class="ne">--&gt; </span><span class="mi">646</span>         <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">647</span> 
+<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="k">def</span> <span class="nf">_more_tags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\svm\_base.py</span> in <span class="ni">predict</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span>             <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">791</span>             <span class="n">y</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span> 
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\svm\_base.py</span> in <span class="ni">predict</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span>         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_for_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span>         <span class="n">predict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sparse_predict</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sparse</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dense_predict</span>
+<span class="ne">--&gt; </span><span class="mi">416</span>         <span class="k">return</span> <span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span> 
+<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="k">def</span> <span class="nf">_dense_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+
+<span class="nn">C:\users\dell\appdata\local\programs\python\python39\lib\site-packages\sklearn\svm\_base.py</span> in <span class="ni">_dense_predict</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">433</span>         <span class="n">svm_type</span> <span class="o">=</span> <span class="n">LIBSVM_IMPL</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span> 
+<span class="ne">--&gt; </span><span class="mi">435</span>         <span class="k">return</span> <span class="n">libsvm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">436</span>             <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">437</span>             <span class="bp">self</span><span class="o">.</span><span class="n">support_</span><span class="p">,</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1692,12 +1749,12 @@ Test-set score: 0.990000
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           0       0.99      1.00      0.99       250
-           1       1.00      0.99      0.99       250
+           0       1.00      0.99      1.00       250
+           1       0.99      1.00      1.00       250
 
-    accuracy                           0.99       500
-   macro avg       0.99      0.99      0.99       500
-weighted avg       0.99      0.99      0.99       500
+    accuracy                           1.00       500
+   macro avg       1.00      1.00      1.00       500
+weighted avg       1.00      1.00      1.00       500
 </pre></div>
 </div>
 </div>
@@ -1739,9 +1796,9 @@ weighted avg       0.99      0.99      0.99       500
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f1_score of random forest: 0.992
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f1_score of random forest: 0.996
 f1_score of svc: 0.667
-f1_score of log: 0.886
+f1_score of log: 0.920
 </pre></div>
 </div>
 </div>
@@ -1771,28 +1828,28 @@ weighted avg       0.25      0.50      0.33       500
 
               precision    recall  f1-score   support
 
-           0       0.86      0.94      0.90       250
-           1       0.94      0.84      0.89       250
+           0       0.89      0.97      0.93       250
+           1       0.97      0.88      0.92       250
 
-    accuracy                           0.89       500
-   macro avg       0.90      0.89      0.89       500
-weighted avg       0.90      0.89      0.89       500
+    accuracy                           0.92       500
+   macro avg       0.93      0.92      0.92       500
+weighted avg       0.93      0.92      0.92       500
 
               precision    recall  f1-score   support
 
-           0       0.99      1.00      0.99       250
-           1       1.00      0.99      0.99       250
+           0       1.00      0.99      1.00       250
+           1       0.99      1.00      1.00       250
 
-    accuracy                           0.99       500
-   macro avg       0.99      0.99      0.99       500
-weighted avg       0.99      0.99      0.99       500
+    accuracy                           1.00       500
+   macro avg       1.00      1.00      1.00       500
+weighted avg       1.00      1.00      1.00       500
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d:\Archivos de Programas\Python\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\DELL\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, msg_start, len(result))
-d:\Archivos de Programas\Python\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+c:\Users\DELL\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, msg_start, len(result))
-d:\Archivos de Programas\Python\lib\site-packages\sklearn\metrics\_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+c:\Users\DELL\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_classification.py:1308: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, msg_start, len(result))
 </pre></div>
 </div>
@@ -1821,7 +1878,7 @@ d:\Archivos de Programas\Python\lib\site-packages\sklearn\metrics\_classificatio
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on training set: 1.000
-Accuracy on test set: 0.990
+Accuracy on test set: 0.998
 </pre></div>
 </div>
 </div>
@@ -1844,7 +1901,10 @@ Accuracy on test set: 0.990
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsRegressor(n_neighbors=3)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsRegressor</label><div class="sk-toggleable__content"><pre>KNeighborsRegressor(n_neighbors=3)</pre></div></div></div></div></div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KNeighborsRegressor(n_neighbors=3)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1853,7 +1913,7 @@ Accuracy on test set: 0.990
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test set R^2: 0.69
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test set R^2: 0.81
 </pre></div>
 </div>
 </div>
@@ -1879,7 +1939,7 @@ Accuracy on test set: 0.990
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUPRC = 0.998163097020146
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUPRC = 1.0
 </pre></div>
 </div>
 </div>
@@ -1900,21 +1960,21 @@ Accuracy on test set: 0.990
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           0       0.99      0.99      0.99       250
-           1       0.99      0.99      0.99       250
+           0       1.00      1.00      1.00       250
+           1       1.00      1.00      1.00       250
 
-    accuracy                           0.99       500
-   macro avg       0.99      0.99      0.99       500
-weighted avg       0.99      0.99      0.99       500
+    accuracy                           1.00       500
+   macro avg       1.00      1.00      1.00       500
+weighted avg       1.00      1.00      1.00       500
 
               precision    recall  f1-score   support
 
-           0       0.99      1.00      0.99       250
-           1       1.00      0.99      0.99       250
+           0       1.00      1.00      1.00       250
+           1       1.00      1.00      1.00       250
 
-    accuracy                           0.99       500
-   macro avg       0.99      0.99      0.99       500
-weighted avg       0.99      0.99      0.99       500
+    accuracy                           1.00       500
+   macro avg       1.00      1.00      1.00       500
+weighted avg       1.00      1.00      1.00       500
 </pre></div>
 </div>
 </div>
